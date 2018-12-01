@@ -7,9 +7,9 @@
         mc:Ignorable="d"
         Title="Тренажер ассоциаций" Height="350" Width="558">
     <Grid Margin="0,0,2,0">
-        <TabControl x:Name="tabControl" HorizontalAlignment="Left" Height="319" VerticalAlignment="Top" Width="548">
+        <TabControl x:Name="tabControl"  VerticalAlignment="Stretch">
             <TabItem Header="Тренировка">
-                <Grid Background="#FFE5E5E5" Margin="0,0,-168,-4" HorizontalAlignment="Left" Width="679">
+                <Grid Background="#FFE5E5E5" Margin="0,0,-2,-4">
                     <Button x:Name="StartButton" Content="Начать" HorizontalAlignment="Left" Margin="20,172,0,0" VerticalAlignment="Top" Width="75" Click="StartButton_Click"/>
                     <ComboBox x:Name="ExerciseChoiseComboBox" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="308" SelectedIndex="0" Height="25">
                         <TextBlock Text="Начальное упражнение (несколько цифр и букв)"/>
