@@ -1,0 +1,2 @@
+# SynesthesiaSimulator
+тренажер ассоциаций
