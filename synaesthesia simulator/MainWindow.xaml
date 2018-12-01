@@ -1,0 +1,78 @@
+﻿<Window x:Class="synaesthesia_simulator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:synaesthesia_simulator"
+        mc:Ignorable="d"
+        Title="Тренажер ассоциаций" Height="350" Width="558">
+    <Grid Margin="0,0,2,0">
+        <TabControl x:Name="tabControl" HorizontalAlignment="Left" Height="319" VerticalAlignment="Top" Width="548">
+            <TabItem Header="Тренировка">
+                <Grid Background="#FFE5E5E5" Margin="0,0,-168,-4" HorizontalAlignment="Left" Width="679">
+                    <Button x:Name="StartButton" Content="Начать" HorizontalAlignment="Left" Margin="20,172,0,0" VerticalAlignment="Top" Width="75" Click="StartButton_Click"/>
+                    <ComboBox x:Name="ExerciseChoiseComboBox" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="308" SelectedIndex="0" Height="25">
+                        <TextBlock Text="Начальное упражнение (несколько цифр и букв)"/>
+                        <TextBlock Text="Стандартное упражнение (все цифры и буквы)"/>
+                        <TextBlock Text="Дополнительное упражнение (Слова)"/>
+                    </ComboBox>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Статистика">
+                <Grid Background="#FFE5E5E5" Margin="0,0,-2,-2">
+                    <Label Content="Любимые цвета" HorizontalAlignment="Left" Margin="29,68,0,0" VerticalAlignment="Top"/>
+                    <ListView  VirtualizingStackPanel.IsVirtualizing="False"  x:Name="FavoriteColorsListView" HorizontalAlignment="Left" Height="158" Margin="29,94,0,0" VerticalAlignment="Top" Width="157">
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=ColorName}" Width="90"  >Название</GridViewColumn>
+                                <GridViewColumn Width="55">Цвет
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Grid Background="{Binding BackgroundColor}">
+                                                <TextBlock Text="{Binding ColorView}"/>
+                                            </Grid>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <ComboBox x:Name="ExerciseChoiseAvgColorsComboBox" HorizontalAlignment="Left" Margin="213,55,0,0" VerticalAlignment="Top" Width="158" SelectionChanged="ExerciseChoiseAvgColorsComboBox_SelectionChanged" >
+                        <TextBlock Text="Начальное упражнение (несколько цифр и букв)"/>
+                        <TextBlock Text="Стандартное упражнение (все цифры и буквы)"/>
+                        <TextBlock Text="Дополнительное упражнение (Слова)"/>
+                    </ComboBox>
+                    <ListView x:Name="AverageColorsListBox" HorizontalAlignment="Left" Height="189" Margin="213,94,0,0" VerticalAlignment="Top" Width="226">
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=CharName}" Width="50"></GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=ColorName}" Width="80">Название</GridViewColumn>
+                                <GridViewColumn Width="55">Цвет
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Grid Background="{Binding BackgroundColor}">
+                                                <TextBlock Text="{Binding ColorView}"/>
+                                            </Grid>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <Label Content="Детальная статистика по цветам" HorizontalAlignment="Left" Margin="213,24,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.207,1.231"/>
+                    <Button x:Name="ReloadButton" Content="Обновить данные" HorizontalAlignment="Left" Margin="29,40,0,0" VerticalAlignment="Top" Width="114" Click="ReloadButton_Click"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
